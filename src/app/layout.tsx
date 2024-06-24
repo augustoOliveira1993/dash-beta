@@ -4,6 +4,8 @@ import "@/app/globals.css";
 import { cn } from "@/lib/utils";
 import { SideBarAvb } from "@/components/SidBarAvb";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { HamburguerMenu } from "@/components/ui/HamburguerMenuAvb";
+import { Suspense } from "react";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -32,7 +34,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {auth && <SideBarAvb children={children} />}
+          <Suspense fallback={<div>Loading...</div>}>
+            {auth && <SideBarAvb children={children} />}
+          </Suspense>
+          <HamburguerMenu />
           {!auth && children}
         </ThemeProvider>
       </body>

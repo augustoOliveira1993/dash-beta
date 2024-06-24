@@ -11,7 +11,7 @@ import { ThermometerIcon } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-5 gap-4 ">
+    <div className="grid grid-cols-5 gap-4 w-full max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
       {Array.from({ length: 11 }).map((_, index) => (
         <Card
           key={index}
@@ -22,14 +22,14 @@ export default function Home() {
             alt="CARDIMAGE"
             className=" h-full w-full rounded-md"
           />
-          <CardFooter className="absolute bottom-0 h-2/5 transition-all  pb-0 w-full bg-avb-green-600 flex justify-between items-center px-2 ">
+          <CardFooter className="absolute -bottom-1 transition-all group-hover:bottom-0 h-2/5  pb-0 w-full bg-avb-green-600/60 group-hover:bg-avb-green-600 backdrop-blur-md flex justify-between items-start pt-4 px-2 ">
             <CardTitle className="text-xs text-zinc-100 flex gap-1 items-center">
               <ThermometerIcon className="size-4" />
               <span>Temperatura Gaiolas</span>
             </CardTitle>
             <Button
               variant="secondary"
-              className="h-6 px-2 items-center text-xs text-zinc-100 rounded-sm bg-avb-green-500 hover:bg-avb-green-500/50"
+              className="h-6 px-2 items-center text-xs text-zinc-100 rounded-sm bg-blue-500 hover:bg-avb-green-500/50"
             >
               Acessar
             </Button>

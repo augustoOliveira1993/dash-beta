@@ -1,11 +1,7 @@
 import { Input } from "@/components/ui/InputAvb";
 import { TreeView } from "./_components/tree/TreeViewDocumets";
 import { Search } from "lucide-react";
-
-export interface TreeNodeProps {
-  name: string;
-  children?: TreeNodeProps[];
-}
+import { Suspense } from "react";
 
 export default function Documentos() {
   const initialDocuments: any = {
@@ -70,13 +66,15 @@ export default function Documentos() {
   };
 
   return (
-    <main>
+    <main className="w-full">
       <div className="space-y-4">
         <div className="relative w-fit">
           <Input placeholder="Buscar arquivos" className="max-w-60 " />
-          <Search className="size-4 absolute right-2 top-3" />
+          <Search className="size-4 absolute right-2 top-3 " />
         </div>
-        <TreeView node={initialDocuments} />
+        <Suspense fallback={<p>carregando..</p>}>
+          <TreeView node={initialDocuments} />
+        </Suspense>
       </div>
     </main>
   );
