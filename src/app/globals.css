@@ -1,10 +1,10 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
   @layer base {
     :root {
-      --background: 0 0% 100%;
+      --background: 147, 27%, 94%;
       --foreground: 240 10% 3.9%;
 
       --card: 0 0% 100%;
@@ -28,18 +28,20 @@
       --destructive: 0 84.2% 60.2%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 240 5.9% 90%;
-      --input: 240 5.9% 90%;
+      
+      --border: 240 5% 85%;
+      --input: 240 5% 85%;
+      
       --ring: 240 10% 3.9%;
 
       --radius: 0.5rem;
     }
 
     .dark {
-      --background: 240 10% 3.9%;
+      --background: 190, 13%, 16.2%;
       --foreground: 0 0% 98%;
 
-      --card: 240 10% 3.9%;
+      --card: 190, 11%, 18.1%;
       --card-foreground: 0 0% 98%;
 
       --popover: 240 10% 3.9%;
@@ -60,8 +62,10 @@
       --destructive: 0 62.8% 30.6%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 240 3.7% 15.9%;
-      --input: 240 3.7% 15.9%;
+      
+      --border: 240 3.7% 30%;
+      --input: 240 3.7% 30%;
+
       --ring: 240 4.9% 83.9%;
     }
   }

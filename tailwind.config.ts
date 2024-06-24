@@ -100,7 +100,26 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }: any) {
+      addUtilities(
+        {
+          ".scrollbar-hidden": {
+            /* Firefox */
+            "scrollbar-width": "none",
+            /* Internet Explorer 10+ */
+            "-ms-overflow-style": "none",
+            /* WebKit */
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
+          },
+        },
+        ["responsive"]
+      );
+    },
+  ],
 } satisfies Config;
 
 export default config;
