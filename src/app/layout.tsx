@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import { cn } from "@/lib/utils";
+import { SideBarAvb } from "@/components/SidBarAvb";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -15,6 +17,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let auth = true;
   return (
     <html lang="pt-br">
       <body
@@ -23,7 +26,15 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {auth && <SideBarAvb children={children} />}
+          {!auth && children}
+        </ThemeProvider>
       </body>
     </html>
   );
