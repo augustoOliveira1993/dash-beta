@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/ButtonAvb";
-import { ArrowLeft, MoonIcon, SunIcon, Undo2 } from "lucide-react";
+import { ArrowLeft, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { Suspense } from "react";
@@ -32,11 +32,7 @@ export const PagesHeader = () => {
         </Suspense>
         <div className="flex items-center gap-3">
           <Button onClick={toggleTheme} variant="ghost" size="icon">
-            {theme && theme === "dark" ? (
-              <SunIcon className="size-4" />
-            ) : (
-              <MoonIcon className="size-4" />
-            )}
+            <SunIcon className="size-4" />
           </Button>
         </div>
       </div>

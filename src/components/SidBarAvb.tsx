@@ -1,7 +1,6 @@
 "use client";
 import { ComponentProps, useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import BACKGROUND_IMAGE from "@/assets/avbBackground.jpg";
 
 import {
   ActivityIcon,
@@ -33,7 +32,7 @@ import {
   NavBarHeader,
   NavBarLink,
 } from "./ui/NavBarAvb";
-import Image from "next/image";
+import { PagesHeader } from "./Header";
 
 export const menuItems = [
   { name: "Página Inicial", href: "/", icon: HomeIcon },
@@ -171,7 +170,7 @@ export const SideBarAvb = ({ children, ...props }: ComponentProps<"div">) => {
         <Button
           size="icon"
           variant="link"
-          className={`backdrop-blur-lg bg-avb-green-500/90 rounded-full text-avb-green-100 absolute top-5 -right-3 z-10 size-6 transition-all`}
+          className={`backdrop-blur-lg bg-avb-green-400 rounded-full text-avb-green-100 absolute top-5 -right-3 z-10 size-6 transition-all`}
           onClick={setUrlModal}
         >
           {sidebar === "open" && <ChevronLeft className="size-4" />}
@@ -217,7 +216,16 @@ export const SideBarAvb = ({ children, ...props }: ComponentProps<"div">) => {
         </NavBar>
       </div>
 
-      <div className="relative overflow-y-auto h-screen ">{children}</div>
+      <div className="relative overflow-y-auto ">
+        <PagesHeader />
+        {/* <Image
+          src={IMG_MOD_02}
+          alt="Background Image"
+          className="object-cover opacity-60 h-full w-fit "
+          fill
+        /> */}
+        {children}
+      </div>
     </main>
   );
 };
