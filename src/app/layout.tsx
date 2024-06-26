@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
 import "@/app/globals.css";
-import { cn } from "@/lib/utils";
 import { SideBarAvb } from "@/components/SidBarAvb";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { HamburguerMenu } from "@/components/ui/HamburguerMenuAvb";
+import { cn } from "@/lib/utils";
+import { AbilityProvider } from '@/providers/useAbilityProvider';
+import type { Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
 import { Suspense } from "react";
-
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
@@ -28,18 +28,20 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Suspense fallback={<div>Loading...</div>}>
-            {auth && <SideBarAvb children={children} />}
-          </Suspense>
-          <HamburguerMenu />
-          {!auth && children}
-        </ThemeProvider>
+        <AbilityProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Suspense fallback={<div>Loading...</div>}>
+              {auth && <SideBarAvb children={children} />}
+            </Suspense>
+            <HamburguerMenu />
+            {!auth && children}
+          </ThemeProvider>
+        </AbilityProvider>
       </body>
     </html>
   );

@@ -1,15 +1,15 @@
+import CARDIMAGE from "@/assets/cardImage.jpeg";
+import { Button } from "@/components/ui/ButtonAvb";
 import {
   Card,
-  CardContent,
   CardFooter,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/CardAvb";
-import CARDIMAGE from "@/assets/cardImage.jpeg";
-import Image from "next/image";
-import { Button } from "@/components/ui/ButtonAvb";
 import { ThermometerIcon } from "lucide-react";
+import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+
   return (
     <div className="grid grid-cols-5 gap-4 w-full max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
       {Array.from({ length: 11 }).map((_, index) => (
