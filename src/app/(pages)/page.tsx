@@ -1,3 +1,4 @@
+'use client'
 import CARDIMAGE from "@/assets/cardImage.jpeg";
 import { Button } from "@/components/ui/ButtonAvb";
 import {
@@ -5,11 +6,12 @@ import {
   CardFooter,
   CardTitle
 } from "@/components/ui/CardAvb";
+import { useAbility } from '@/providers/useAbilityProvider';
 import { ThermometerIcon } from "lucide-react";
 import Image from "next/image";
 
-export default async function Home() {
-
+export default function Home() {
+  const ability = useAbility()
   return (
     <div className="grid grid-cols-5 gap-4 w-full max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
       {Array.from({ length: 11 }).map((_, index) => (
@@ -36,6 +38,7 @@ export default async function Home() {
           </CardFooter>
         </Card>
       ))}
+      {ability.can('user_create') && <button className="w-full h-12 bg-avb-green-600 text-white rounded-md">Teste</button>}
     </div>
   );
 }

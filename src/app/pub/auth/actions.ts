@@ -33,10 +33,4 @@ async function signIn(data: FormData) {
   redirect("/");
 }
 
-async function signOutUser() {
-  "use server";
-  cookies().delete("nextauth.token");
-  cookies().delete("nextauth.refreshtoken");
-}
-
-export { signIn, signOutUser };
+export { signIn };

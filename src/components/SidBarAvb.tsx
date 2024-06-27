@@ -1,6 +1,5 @@
 "use client";
-import { ComponentProps, useEffect, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import LOGOAVBHORIZONTAL from "@/assets/horizontal-logo.png";
 import {
   ActivityIcon,
   BarChartIcon,
@@ -21,8 +20,10 @@ import {
   ThermometerIcon,
   User,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { ComponentProps, useEffect, useState } from "react";
 import { Button } from "./ui/ButtonAvb";
-import LOGOAVBHORIZONTAL from "@/assets/horizontal-logo.png";
 import {
   NavBar,
   NavBarContent,
@@ -202,9 +203,11 @@ export const SideBarAvb = ({ children, ...props }: ComponentProps<"div">) => {
             </Button>
 
             {sidebar === "open" && (
-              <Button variant="link" size="icon">
-                <LogOut className="size-4 text-zinc-100" />
-              </Button>
+              <Link href="/auth/signin">
+                <Button variant="link" size="icon">
+                  <LogOut className="size-4 text-zinc-100" />
+                </Button>
+              </Link>
             )}
           </NavBarFooter>
         </NavBar>

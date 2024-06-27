@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import "dotenv/config";
 import https from "https";
 import { destroyCookie, parseCookies, setCookie } from "nookies";
 let cookies = parseCookies();
@@ -13,14 +14,14 @@ export const httpsAgent = new https.Agent({
 
 const baseURL =
   process.env.NODE_ENV === "development"
-    ? process.env.NEXT_DEV_API_BASE_URL
-    : process.env.NEXT_PROD_API_BASE_URL;
+    ? process.env.NEXT_PUBLIC_DEV_API_BASE_URL
+    : process.env.NEXT_PUBLIC_PROD_API_BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${cookies["nextauth.token"]}`,
+    Accept: "application/json",
   },
   httpsAgent: httpsAgent,
 });
@@ -28,16 +29,17 @@ const axiosInstance = axios.create({
 // Você pode adicionar interceptors aqui se necessário
 axiosInstance.interceptors.request.use(
   (config) => {
-    console.log("cookies", cookies);
-
     const accessToken = cookies["nextauth.token"];
     if (accessToken) {
       config.headers["x-access-token"] = accessToken;
-      config.headers["timeout"] = 20000;
+      config.headers.Authorization = `Bearer ${accessToken}`;
+      config.headers.Accept = "application/json";
+      config.headers.timeout = 20000;
     } else {
       destroyCookie(undefined, "nextauth.token");
       destroyCookie(undefined, "nextauth.refreshToken");
     }
+
     return config;
   },
   (error) => {
@@ -55,12 +57,16 @@ axiosInstance.interceptors.response.use(
       code?: string;
     }>
   ) => {
+    console.log("error", error);
+
     if (error.request) {
       axiosInstance.defaults.baseURL = process.env.ENDPOINT_AVBSERVER;
     }
+
     if (error.response?.status === 401) {
       if (error.response.data?.code === "token.expired") {
         cookies = parseCookies();
+        console.log("Error", error);
 
         const { "nextauth.refreshToken": refreshToken } = cookies;
 

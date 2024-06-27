@@ -1,23 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getUrl } from "./lib/helpers";
-
-const publicRoutes = ["/", "/auth"];
 
 export default function middleware(request: NextRequest) {
   "use server";
   const token = request.cookies.get("nextauth.token")?.value;
   const routerName = request.nextUrl.pathname;
-  if (publicRoutes.includes(routerName)) {
+
+  if (routerName.startsWith("/pub") || routerName === "/") {
     return NextResponse.next();
   }
 
-  if (routerName.includes("/auth") && token) {
-    return NextResponse.redirect(new URL(getUrl("/")));
+  if (!token) {
+    request.cookies.clear();
+    const urlNext = request.nextUrl.clone();
+    urlNext.pathname = "/pub/auth/signin";
+    return NextResponse.redirect(urlNext);
   }
 
-  if (routerName !== "/auth/signin" && !token) {
-    return NextResponse.redirect(new URL(getUrl("/auth/signin")));
+  if (routerName.includes("/pub/auth/signin") && token) {
+    const urlNext = request.nextUrl.clone();
+    urlNext.pathname = "/";
+    return NextResponse.redirect(urlNext);
   }
+
+  return NextResponse.next();
 }
 
 export const config = {
