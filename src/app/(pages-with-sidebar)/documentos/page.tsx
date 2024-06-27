@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/InputAvb";
-import { TreeView } from "./_components/tree/TreeViewDocumets";
 import { Search } from "lucide-react";
 import { Suspense } from "react";
+import { TreeView } from "./_components/tree/TreeViewDocumets";
 
 export default function Documentos() {
   const initialDocuments: any = {

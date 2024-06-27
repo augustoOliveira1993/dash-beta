@@ -12,43 +12,43 @@ import { Suspense } from "react";
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "SIG AVB",
-  description: "Dashboard AVB.",
+    title: "SIG AVB",
+    description: "Dashboard AVB.",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  let auth = true;
-  return (
-    <html lang="pt-br">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <UseQueryProviders>
-          <AuthProvider>
-            <AbilityProvider>
-              <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange
-              >
-                <Suspense fallback={<div>Loading...</div>}>
-                  {auth && <SideBarAvb children={children} />}
-                </Suspense>
-                <HamburguerMenu />
-                {!auth && children}
-              </ThemeProvider>
-            </AbilityProvider>
-          </AuthProvider>
-        </UseQueryProviders>
-      </body>
-    </html>
-  );
+    let auth = true;
+    return (
+        <html lang="pt-br">
+            <body
+                className={cn(
+                    "min-h-screen bg-background font-sans antialiased",
+                    fontSans.variable
+                )}
+            >
+                <UseQueryProviders>
+                    <AuthProvider>
+                        <AbilityProvider>
+                            <ThemeProvider
+                                attribute="class"
+                                defaultTheme="system"
+                                enableSystem
+                                disableTransitionOnChange
+                            >
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    {auth && <SideBarAvb children={children} />}
+                                </Suspense>
+                                <HamburguerMenu />
+                                {!auth && children}
+                            </ThemeProvider>
+                        </AbilityProvider>
+                    </AuthProvider>
+                </UseQueryProviders>
+            </body>
+        </html>
+    );
 }
