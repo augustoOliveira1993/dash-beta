@@ -208,7 +208,7 @@ export const SideBarAvb = ({ children, ...props }: ComponentProps<"div">) => {
             </Button>
 
             {sidebar === "open" && (
-              <Link href="/auth/signin">
+              <Link href="/pub/auth/signin">
                 <Button variant="link" size="icon">
                   <LogOut className="size-4 text-zinc-100" />
                 </Button>

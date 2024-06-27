@@ -17,8 +17,6 @@ const AbilityContext = createContext<UserContextType>({
 export const AbilityProvider = ({ children }: { children: ReactNode }) => {
 
   const { user } = useGetUser()
-  console.log('[AbilityProvider] ==> user', user);
-
 
   const can = (permission: string) => {
     return user?.ability.includes(permission) || false;

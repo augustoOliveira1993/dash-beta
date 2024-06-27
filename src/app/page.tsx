@@ -1,12 +1,25 @@
-import { Card, CardFooter, CardTitle } from "@/components/ui/CardAvb";
-import Image from "next/image";
-import { Button } from "@/components/ui/ButtonAvb";
 import BACKGROUND_IMAGE from "@/assets/avbBackground.jpg";
+import IMG_corridaco from "@/assets/corridaco.png";
+import IMG_custos from "@/assets/custos.jpeg";
+import IMG_escoria from "@/assets/escoria.jpeg";
+import IMG_gestaometas from "@/assets/gestaometas.png";
+import IMG_gusa from "@/assets/gusa.jpeg";
+import IMG_indicadores from "@/assets/indicadores.jpeg";
+import IMG_laminacao from "@/assets/laminacao.png";
+import IMG_lc from "@/assets/lc.png";
+import IMG_materiais from "@/assets/materiais.png";
+import IMG_monitoramento from "@/assets/monitoramento.png";
+import IMG_organo from "@/assets/organo.png";
+import IMG_paradas from "@/assets/paradas.png";
+import IMG_preditivas from "@/assets/preditivas.png";
+import { Button } from "@/components/ui/ButtonAvb";
+import { Card, CardFooter, CardTitle } from "@/components/ui/CardAvb";
 import {
   ActivityIcon,
   BarChartIcon,
   BoxIcon,
   CalculatorIcon,
+  Coins,
   FileTextIcon,
   FlameIcon,
   MonitorIcon,
@@ -14,21 +27,8 @@ import {
   PauseCircleIcon,
   TargetIcon,
   ThermometerIcon,
-  Coins,
 } from "lucide-react";
-import IMG_lc from "@/assets/lc.png";
-import IMG_corridaco from "@/assets/corridaco.png";
-import IMG_organo from "@/assets/organo.png";
-import IMG_gestaometas from "@/assets/gestaometas.png";
-import IMG_monitoramento from "@/assets/monitoramento.png";
-import IMG_paradas from "@/assets/paradas.png";
-import IMG_laminacao from "@/assets/laminacao.png";
-import IMG_preditivas from "@/assets/preditivas.png";
-import IMG_materiais from "@/assets/materiais.png";
-import IMG_gusa from "@/assets/gusa.jpeg";
-import IMG_indicadores from "@/assets/indicadores.jpeg";
-import IMG_custos from "@/assets/custos.jpeg";
-import IMG_escoria from "@/assets/escoria.jpeg";
+import Image from "next/image";
 import Link from "next/link";
 
 const cardData = [
@@ -147,6 +147,9 @@ export default function Home() {
           </CardFooter>
         </Card>
       ))}
+      <div className="block w-full h-20">
+        <button className="w-100">TESTE</button>
+      </div>
     </div>
   );
 }
