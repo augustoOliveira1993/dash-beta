@@ -3,7 +3,6 @@ import { Inter as FontSans } from "next/font/google";
 import "@/app/globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { HamburguerMenu } from "@/components/ui/HamburguerMenuAvb";
 import { Suspense } from "react";
 import { SideBarAvb } from "@/components/SidBarAvb";
 
@@ -37,7 +36,7 @@ export default function RootLayout({
           <Suspense fallback={<div>Loading...</div>}>
             {auth && <SideBarAvb children={children} />}
           </Suspense>
-          <HamburguerMenu />
+          {/* <HamburguerMenu /> */}
           {!auth && children}
         </ThemeProvider>
       </body>

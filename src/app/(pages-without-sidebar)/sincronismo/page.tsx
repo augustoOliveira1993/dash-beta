@@ -7,6 +7,7 @@ import IMG_LAMINACAO from "../../../../public/static/sid/laminacao.png";
 import IMG_LING22 from "../../../../public/static/sid/Ling22.png";
 import IMG_PANELA from "../../../../public/static/sid/panela11.png";
 import IMG_TERMO from "../../../../public/static/sid/termo.png";
+import BACKGROUND_IMAGE from "../../../../public/static/sid/MOD_01.jpg";
 
 const TabelaDados = () => {
   const dados = [
@@ -67,50 +68,9 @@ const TabelaDados = () => {
   );
 };
 
-const previsaoVazamento = [
-  {
-    af: "AF1",
-    panelas: [
-      {
-        numeroDePanelas: 1,
-        gusaParaIniciar: 25.7,
-        gusaNoCadinho: 40.7,
-        gusaFaltante: 0,
-        tempoRestante: 0,
-      },
-      {
-        numeroDePanelas: 2,
-        gusaParaIniciar: 51.5,
-        gusaNoCadinho: 40.7,
-        gusaFaltante: 10.8,
-        tempoRestante: 25,
-      },
-    ],
-  },
-  {
-    af: "AF2",
-    panelas: [
-      {
-        numeroDePanelas: 1,
-        gusaParaIniciar: 27,
-        gusaNoCadinho: 44.4,
-        gusaFaltante: 0,
-        tempoRestante: 0,
-      },
-      {
-        numeroDePanelas: 2,
-        gusaParaIniciar: 53.9,
-        gusaNoCadinho: 44.4,
-        gusaFaltante: 9.5,
-        tempoRestante: 24,
-      },
-    ],
-  },
-];
-
 const PrevisaoDeVazamento = () => {
   return (
-    <div className="p-2 bg-zinc-50 rounded-md shadow-md mx-auto">
+    <div className="p-2 backdrop-blur-md border rounded-md shadow-md mx-auto">
       <strong className="text-[0.625rem]">Previsão de Vazamento</strong>
       <div className="flex gap-2 items-end">
         <div className="flex flex-col text-[0.625rem]">
@@ -232,8 +192,17 @@ export default function Sincronismo() {
     ["10h", 5, "22h", 6],
     ["11h", 5, "23h", 6],
   ];
+
+  const valueBarLC = `h-[50%]`;
+
   return (
     <div className="space-y-2 h-fit px-4 py-4">
+      <Image
+        fill
+        src={BACKGROUND_IMAGE}
+        alt="Background Image Sincronismo"
+        className="-z-20"
+      />
       <div className="flex gap-2 justify-between">
         <section className=" flex flex-col items-center h-fit w-max min-w-[387px]">
           <strong className="text-[0.625rem] border w-full bg-avb-green-600 text-zinc-50 p-2 rounded-t-md text-center shadow-md">
@@ -302,7 +271,7 @@ export default function Sincronismo() {
         <section className="flex flex-col gap-2 min-w-[340px]">
           <PrevisaoDeVazamento />
           <div className="flex gap-2 w-full justify-around items-end ">
-            <div className="flex flex-col items-center backdrop-blur-md rounded-md shadow-md border p-2 h-full justify-end bg-zinc-50">
+            <div className="flex flex-col items-center backdrop-blur-md rounded-md shadow-md border p-2 h-full justify-end ">
               <Image src={IMG_LD} alt="Imagem LD" className="h-24 w-fit" />
               <div className="flex flex-col">
                 <div className="grid grid-cols-2">
@@ -324,7 +293,7 @@ export default function Sincronismo() {
               </div>
             </div>
 
-            <div className="flex flex-col items-center backdrop-blur-md rounded-md shadow-md border p-2 h-full justify-end bg-zinc-50">
+            <div className="flex flex-col items-center backdrop-blur-md rounded-md shadow-md border p-2 h-full justify-end ">
               <Image src={IMG_FP} alt="Imagem LD" className="h-16 w-fit" />
               <div>
                 <div className="grid grid-cols-5">
@@ -403,7 +372,7 @@ export default function Sincronismo() {
               <span className="flex text-center font-bold text-[0.625rem] bg-zinc-700 border-4 border-zinc-500 h-20 w-full items-end " />
 
               <span className="flex text-center font-bold text-[0.625rem] bg-zinc-700 border-4 border-zinc-500 h-20 w-full items-end ">
-                <span className="flex w-full h-3/5 bg-yellow-500 " />
+                <span className={`flex w-full ${valueBarLC} bg-yellow-500`} />
               </span>
 
               <span className="flex text-center font-bold text-[0.625rem] bg-zinc-700 border-4 border-zinc-500 h-20 w-full items-end " />
@@ -572,7 +541,7 @@ export default function Sincronismo() {
           <TabelaDados />
         </section>
 
-        <section className="w-full max-w-80 min-w-60 flex flex-col gap-2 border p-2 justify-around backdrop-blur-md rounded-md shadow-md">
+        <section className="w-full max-w-96 min-w-60 flex flex-col gap-2 border p-2 justify-around backdrop-blur-md rounded-md shadow-md">
           <div className="flex items-center gap-2 justify-between rounded p-2 border bg-zinc-200">
             <span className="font-bold text-[0.625rem] line-clamp-1">
               Produtividade AFs:
@@ -629,7 +598,7 @@ export default function Sincronismo() {
           </div>
         </section>
 
-        <section className="w-full min-w-72 p-2 border backdrop-blur-md rounded-md flex flex-col justify-around shadow-md">
+        <section className="w-full min-w-72 max-w-[620px] p-2 border backdrop-blur-md rounded-md flex flex-col justify-around shadow-md">
           <div className="flex flex-col items-center">
             <Image
               src={IMG_LC2}
@@ -692,9 +661,17 @@ export default function Sincronismo() {
               </span>
             </div>
           </div>
+          <div className="flex items-center gap-2 justify-between rounded p-2 border bg-zinc-200">
+            <span className="font-bold text-[0.625rem] line-clamp-1">
+              Pressão de Gás Laminação:
+            </span>
+            <span className="border bg-zinc-50 text-[0.625rem] px-3 font-medium">
+              3797 mmCa
+            </span>
+          </div>
         </section>
 
-        <section className="w-full max-w-80 min-w-72 p-2 border backdrop-blur-md rounded-md flex flex-col justify-around shadow-md">
+        <section className="w-full max-w-[720px] min-w-72 p-2 border backdrop-blur-md rounded-md flex flex-col justify-around shadow-md">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2 justify-between px-2 rounded border bg-zinc-200">
               <span className="font-bold text-[0.625rem] py-2 line-clamp-1">
