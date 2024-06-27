@@ -110,7 +110,7 @@ const previsaoVazamento = [
 
 const PrevisaoDeVazamento = () => {
   return (
-    <div className="p-2 bg-zinc-50 rounded-md shadow-md">
+    <div className="p-2 bg-zinc-50 rounded-md shadow-md mx-auto">
       <strong className="text-[0.625rem]">Previsão de Vazamento</strong>
       <div className="flex gap-2 items-end">
         <div className="flex flex-col text-[0.625rem]">
@@ -131,7 +131,7 @@ const PrevisaoDeVazamento = () => {
           </p>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-[0.625rem] font-bold border w-full rounded-t text-center bg-blue-500 text-zinc-50">
+          <span className="text-[0.625rem] font-bold border w-full rounded-t text-center bg-avb-green-600 text-zinc-50">
             AF - 01
           </span>
           <div className="flex">
@@ -172,7 +172,7 @@ const PrevisaoDeVazamento = () => {
           </div>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-[0.625rem] font-bold border w-full rounded-t  text-center bg-blue-500 text-zinc-50">
+          <span className="text-[0.625rem] font-bold border w-full rounded-t  text-center bg-avb-green-600 text-zinc-50">
             AF - 02
           </span>
           <div className="flex">
@@ -217,62 +217,6 @@ const PrevisaoDeVazamento = () => {
   );
 };
 
-const PrevisaoVazamentoTable = () => {
-  return (
-    <div className="p-2 w-fit flex gap-2 h-fit">
-      {previsaoVazamento.map((item, index) => (
-        <div key={index} className="border p-2 rounded-lg">
-          <h2 className="text-sm font-bold mb-2">{item.af}</h2>
-          {item.panelas.map((panela, subIndex) => (
-            <div key={subIndex} className="mb-2">
-              <div className="grid grid-cols-[1fr_20px] gap-4 text-white rounded-sm bg-blue-600">
-                <span className="font-semibold text-[0.625rem] pl-1">
-                  Panela:
-                </span>
-                <span className=" text-[0.625rem] text-end font-bold pr-2">
-                  {panela.numeroDePanelas}
-                </span>
-              </div>
-              <div className="grid grid-cols-[1fr_20px]  gap-4 ">
-                <span className="font-semibold text-[0.625rem] pl-1">
-                  Gusa p/ iniciar Vaza. (t):
-                </span>
-                <span className="text-[0.625rem] text-end pr-2">
-                  {panela.gusaParaIniciar}
-                </span>
-              </div>
-              <div className="grid grid-cols-[1fr_20px]  gap-4 ">
-                <span className="font-semibold text-[0.625rem] pl-1">
-                  Gusa no Cadinho Atual (t):
-                </span>
-                <span className="text-[0.625rem] text-end pr-2">
-                  {panela.gusaNoCadinho}
-                </span>
-              </div>
-              <div className="grid grid-cols-[1fr_20px]  gap-4 ">
-                <span className="font-semibold text-[0.625rem] pl-1">
-                  Gusa Faltante (t):
-                </span>
-                <span className="text-[0.625rem] text-end pr-2">
-                  {panela.gusaFaltante}
-                </span>
-              </div>
-              <div className="grid grid-cols-[1fr_20px]  gap-4 ">
-                <span className="font-semibold text-[0.625rem] pl-1">
-                  Tempo Restante (min):
-                </span>
-                <span className="text-[0.625rem] text-end pr-2">
-                  {panela.tempoRestante}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-};
-
 export default function Sincronismo() {
   const dados = [
     ["0h", 6, "12h", 6],
@@ -292,7 +236,7 @@ export default function Sincronismo() {
     <div className="space-y-2 h-fit px-4 py-4">
       <div className="flex gap-2 justify-between">
         <section className=" flex flex-col items-center h-fit w-max min-w-[387px]">
-          <strong className="text-[0.625rem] border w-full bg-blue-500 text-zinc-50 p-2 rounded-t-md text-center shadow-md">
+          <strong className="text-[0.625rem] border w-full bg-avb-green-600 text-zinc-50 p-2 rounded-t-md text-center shadow-md">
             Ritmo de Produção/Dia AFS: 1227 t
           </strong>
           <div className="flex backdrop-blur-md rounded-md shadow-md p-2">
@@ -309,7 +253,7 @@ export default function Sincronismo() {
                       {linha.map((celula, subIndex) => (
                         <td
                           key={subIndex}
-                          className={`min-w-8 text-[0.625rem] flex justify-center items-center border border-gray-400 font-medium ${subIndex % 2 === 0 ? "dark:bg-blue-950 bg-zinc-200" : "bg-zinc-50"} ${index === 9 && subIndex === 0 ? "!bg-blue-500 text-white" : ""}`}
+                          className={`min-w-8 text-[0.625rem] flex justify-center items-center border border-gray-400 font-medium ${subIndex % 2 === 0 ? "dark:bg-blue-950 bg-zinc-200" : "bg-zinc-50"} ${index === 9 && subIndex === 0 ? "!bg-avb-green-600 text-white" : ""}`}
                         >
                           {celula}
                         </td>
@@ -342,7 +286,7 @@ export default function Sincronismo() {
                       {linha.map((celula, subIndex) => (
                         <td
                           key={subIndex}
-                          className={`min-w-8 text-[0.625rem] flex justify-center items-center border border-gray-400 font-medium ${subIndex % 2 === 0 ? "dark:bg-blue-950 bg-zinc-200" : "bg-zinc-50"} ${index === 9 && subIndex === 0 ? "!bg-blue-500 text-white" : ""}`}
+                          className={`min-w-8 text-[0.625rem] flex justify-center items-center border border-gray-400 font-medium ${subIndex % 2 === 0 ? "dark:bg-blue-950 bg-zinc-200" : "bg-zinc-50"} ${index === 9 && subIndex === 0 ? "!bg-avb-green-600 text-white" : ""}`}
                         >
                           {celula}
                         </td>
@@ -355,10 +299,10 @@ export default function Sincronismo() {
           </div>
         </section>
 
-        <section className="flex flex-col gap-2 min-w-80">
+        <section className="flex flex-col gap-2 min-w-[340px]">
           <PrevisaoDeVazamento />
-          <div className="flex gap-2 w-full justify-around items-end backdrop-blur-md rounded-md shadow-md border p-2">
-            <div className="flex flex-col items-center">
+          <div className="flex gap-2 w-full justify-around items-end ">
+            <div className="flex flex-col items-center backdrop-blur-md rounded-md shadow-md border p-2 h-full justify-end bg-zinc-50">
               <Image src={IMG_LD} alt="Imagem LD" className="h-24 w-fit" />
               <div className="flex flex-col">
                 <div className="grid grid-cols-2">
@@ -380,7 +324,7 @@ export default function Sincronismo() {
               </div>
             </div>
 
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center backdrop-blur-md rounded-md shadow-md border p-2 h-full justify-end bg-zinc-50">
               <Image src={IMG_FP} alt="Imagem LD" className="h-16 w-fit" />
               <div>
                 <div className="grid grid-cols-5">
@@ -557,7 +501,7 @@ export default function Sincronismo() {
             className="w-48 h-fit -mb-5"
           />
           <table className="border-collapse border border-gray-400">
-            <thead className="bg-blue-500 text-zinc-50">
+            <thead className="bg-avb-green-600 text-zinc-50">
               <tr>
                 <th className="text-[0.625rem] border border-gray-400 px-2">
                   Parâmetro
@@ -771,7 +715,7 @@ export default function Sincronismo() {
             </div>
           </div>
           <div>
-            <strong className="text-[0.625rem] text-center w-full flex items-center  justify-center bg-blue-500  text-zinc-50 py-2 rounded-t border">
+            <strong className="text-[0.625rem] text-center w-full flex items-center  justify-center bg-avb-green-600  text-zinc-50 py-2 rounded-t border">
               Projeção Saldo de Gusa
             </strong>
             <div className="flex items-center w-full justify-center">

@@ -1,25 +1,26 @@
-import { TabPanelTest, TabTest, TabsTest } from "@/components/ui/TabTest";
+import {
+  TabContent,
+  TabList,
+  TabPanel,
+  TabTrigger,
+  Tabs,
+} from "@/components/ui/Tabs";
 
 const MyComponent = () => {
   return (
     <div className="px-10">
-      <TabsTest>
-        <TabTest label="Tab 1">
-          <TabPanelTest>
-            <p>Conteúdo da Tab 1</p>
-          </TabPanelTest>
-        </TabTest>
-        <TabTest label="Tab 2">
-          <TabPanelTest>
-            <p>Conteúdo da Tab 2</p>
-          </TabPanelTest>
-        </TabTest>
-        <TabTest label="Tab 3">
-          <TabPanelTest>
-            <p>Conteúdo da Tab 3</p>
-          </TabPanelTest>
-        </TabTest>
-      </TabsTest>
+      <Tabs defaultIndex={0}>
+        <TabList>
+          <TabTrigger index={0}>Valor 01</TabTrigger>
+          <TabTrigger index={1}>Valor 02</TabTrigger>
+          <TabTrigger index={2}>Valor 03</TabTrigger>
+        </TabList>
+        <TabContent>
+          <TabPanel index={0}>Vretery</TabPanel>
+          <TabPanel index={1}>Valor 02</TabPanel>
+          <TabPanel index={2}>Valor 03</TabPanel>
+        </TabContent>
+      </Tabs>
     </div>
   );
 };
